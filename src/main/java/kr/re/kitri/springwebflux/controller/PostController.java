@@ -1,9 +1,8 @@
 package kr.re.kitri.springwebflux.controller;
 
 import kr.re.kitri.springwebflux.model.Post;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.reactivestreams.Publisher;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -32,5 +31,10 @@ public class PostController {
         Post post = new Post(postId, "안녕하세요", "반가워요..");
         return Mono
                 .just(post);
+    }
+
+    @PostMapping("/posts")
+    public void registPost(@RequestBody Mono<Post> post) {
+
     }
 }
